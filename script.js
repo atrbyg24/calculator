@@ -143,5 +143,9 @@ btns.addEventListener("click", (event) => {
             secondNumber = "";
         }
     }
+    if (!isFinite(result)) {
+        alert("Divide by zero error");
+        clear();
+    }
     populateDisplay();
 })
