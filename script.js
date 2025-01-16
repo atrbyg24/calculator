@@ -25,7 +25,7 @@ function divide(a,b) {
 
 function populateDisplay() {
     let display = document.querySelector(".display");
-    display.textContent = (result === "") ? firstNumber + operator + secondNumber: result + operator + secondNumber;
+    display.textContent = (result === "") ? (firstNumber + operator + secondNumber).slice(0,9): (result + operator + secondNumber).slice(0,9);
 }
 
 function operate() {
@@ -63,7 +63,12 @@ btns.addEventListener("click", (event) => {
     } else if (target.id === "AC") {
         clear();
     } else if (target.id === "plusminus") {
-
+        if (secondNumber !== "") {
+            secondNumber = parseFloat(secondNumber) * -1;
+        }
+        if (operator === "" && firstNumber !== "") {
+            firstNumber = parseFloat(firstNumber) * -1;
+        }
     } else if (target.id === "add") {
         if (operator === "") {
             operator = "+";
