@@ -84,7 +84,7 @@ btns.addEventListener("click", (event) => {
         }
 
     } else if (target.id === "divide") {
-        if (operator === "/") {
+        if (operator === "") {
             operator = "/";
         }
 
@@ -121,7 +121,6 @@ btns.addEventListener("click", (event) => {
             firstNumber = result;
             operator = "";
             secondNumber = "";
-            populateDisplay();
         }
     }
     populateDisplay();
