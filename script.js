@@ -70,7 +70,7 @@ btns.addEventListener("click", (event) => {
             firstNumber = parseFloat(firstNumber) * -1;
         }
     } else if (target.id === "add") {
-        if (operator === "") {
+        if (firstNumber !== "" && operator === "") {
             operator = "+";
         } else {
             if (validOperation()) {
@@ -81,7 +81,7 @@ btns.addEventListener("click", (event) => {
             }
         }
     } else if (target.id === "subtract") {
-        if (operator === "") {
+        if (firstNumber !== "" && operator === "") {
             operator = "-";
         } else {
             if (validOperation()) {
@@ -92,7 +92,7 @@ btns.addEventListener("click", (event) => {
             }
         }
     } else if (target.id === "multiply") {
-        if (operator ===  "") {
+        if (firstNumber !== "" && operator ===  "") {
             operator = "*";
         } else {
             if (validOperation()) {
@@ -103,7 +103,7 @@ btns.addEventListener("click", (event) => {
             }
         }
     } else if (target.id === "divide") {
-        if (operator === "") {
+        if (firstNumber !== "" && operator === "") {
             operator = "/";
         } else {
             if (validOperation()) {
