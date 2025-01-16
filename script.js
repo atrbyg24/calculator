@@ -32,11 +32,11 @@ function operate() {
     let a = parseFloat(firstNumber);
     let b = parseFloat(secondNumber);
     if (operator == "+") {
-        return add(a,b);
+        return Math.round(add(a,b) * 100000)/ 100000;
     } else if (operator == "-") {
-        return subtract(a,b);
+        return Math.round(subtract(a,b) * 100000)/ 100000;
     } else if (operator == "*") {
-        return multiply(a,b);
+        return Math.round(multiply(a,b) * 100000)/ 100000;
     } else {
         return Math.round(divide(a,b) * 100000)/ 100000;
     }
