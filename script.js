@@ -38,7 +38,7 @@ function operate() {
     } else if (operator == "*") {
         return multiply(a,b);
     } else {
-        return divide(a,b);
+        return Math.round(divide(a,b) * 100000)/ 100000;
     }
 }
 
