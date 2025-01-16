@@ -72,22 +72,42 @@ btns.addEventListener("click", (event) => {
                 result = operate();
                 firstNumber = result;
                 operator = "+";
+                secondNumber = "";
             }
         }
     } else if (target.id === "subtract") {
         if (operator === "") {
             operator = "-";
+        } else {
+            if (validOperation()) {
+                result = operate();
+                firstNumber = result;
+                operator = "+";
+                secondNumber = "";
+            }
         }
     } else if (target.id === "multiply") {
         if (operator ===  "") {
             operator = "*";
+        } else {
+            if (validOperation()) {
+                result = operate();
+                firstNumber = result;
+                operator = "+";
+                secondNumber = "";
+            }
         }
-
     } else if (target.id === "divide") {
         if (operator === "") {
             operator = "/";
+        } else {
+            if (validOperation()) {
+                result = operate();
+                firstNumber = result;
+                operator = "+";
+                secondNumber = "";
+            }
         }
-
     } else if (target.id === "delete") {
         if (secondNumber !== "") {
             secondNumber = secondNumber.slice(0,-1);
