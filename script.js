@@ -4,7 +4,7 @@ let operator = "";
 let result = "";
 
 function validOperation() {
-    return (firstNumber !== "") && (secondNumber !== "") && (operator !== null);
+    return (firstNumber !== "") && (secondNumber !== "") && (operator !== "");
 }
 
 function add(a,b) {
@@ -24,17 +24,13 @@ function divide(a,b) {
 };
 
 function populateDisplay() {
-    let smallDisplay = document.querySelector(".small-display");
-    let largeDisplay = document.querySelector(".large-display");
-    smallDisplay.textContent = (result === "") ? "" : firstNumber + operator;
-    largeDisplay.textContent = (result === "") ? firstNumber + operator: result;
+    let display = document.querySelector(".display");
+    display.textContent = (result === "") ? firstNumber + operator + secondNumber: result + operator + secondNumber;
 }
 
 function operate() {
     let a = parseFloat(firstNumber);
     let b = parseFloat(secondNumber);
-    a = firstNumberSign ? a : a * -1;
-    b = secondNumberSign ? b : b * -1;
     if (operator == "+") {
         return add(a,b);
     } else if (operator == "-") {
@@ -64,28 +60,49 @@ btns.addEventListener("click", (event) => {
         } else {
             secondNumber += numbers.indexOf(target.id);
         }
-        populateDisplay();
     } else if (target.id === "AC") {
         clear();
-        populateDisplay();
     } else if (target.id === "plusminus") {
 
     } else if (target.id === "add") {
-
+        if (operator === "") {
+            operator = "+";
+        } else {
+            if (validOperation()) {
+                result = operate();
+                firstNumber = result;
+                operator = "+";
+            }
+        }
     } else if (target.id === "subtract") {
-
+        if (operator === "") {
+            operator = "-";
+        }
     } else if (target.id === "multiply") {
+        if (operator ===  "") {
+            operator = "*";
+        }
 
     } else if (target.id === "divide") {
+        if (operator === "/") {
+            operator = "/";
+        }
 
     } else if (target.id === "delete") {
-
-        populateDisplay();
+        if (secondNumber !== "") {
+            secondNumber = secondNumber.slice(0,-1);
+        }
+        if (secondNumber === "" && operator !== "") {
+            operator = "";
+        }
+        if (secondNumber === "" && operator === "" && firstNumber !== "") {
+            firstNumber = firstNumber.slice(0,-1);
+        }
     } else if (target.id === "decimal") {
         if (firstNumber === "") {
             firstNumber = "0.";
         }
-        if (!(firstNumber === "") && operator === "" && secondNumber === "") {
+        if (firstNumber !== "" && operator === "" && secondNumber === "") {
             if (!(firstNumber.includes("."))) {
                 firstNumber += ".";
             }
@@ -94,12 +111,18 @@ btns.addEventListener("click", (event) => {
             if (secondNumber === "") {
                 secondNumber = "0.";
             }
-            if (!(secondNumber === "") && !(secondNumber.includes("."))) {
+            if (secondNumber !== "" && !(secondNumber.includes("."))) {
                 secondNumber += ".";
             }
         }
-        populateDisplay();
     } else if (target.id === "equals") {
-
+        if (validOperation()) {
+            result = operate();
+            firstNumber = result;
+            operator = "";
+            secondNumber = "";
+            populateDisplay();
+        }
     }
+    populateDisplay();
 })
